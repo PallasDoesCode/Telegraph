@@ -1,32 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using Telegraph.Internal;
 
 namespace Telegraph
 {
     public class RequestBuilder
     {
-        private string _baseUrl;
-        private Dictionary<string, object> _dictParameters;
-
         #region Properties
 
-        public HttpRequestMessage RequestMessage { get; set; }
-        public HttpResponseMessage ResponseMessage { get; set; }
+        string BaseUrl { get; set; }
+        Dictionary<string, object> Parameters { get; set; }
+        HttpClient client = new HttpClient();
+
+        HttpRequestMessage RequestMessage { get; set; }
+        HttpResponseMessage ResponseMessage { get; set; }
+        HttpMethod Method { get; set; }
+        Uri Uri { get; set; }
+        HttpRequestHeaders Headers { get; set; }
+        bool HasSuccessStatusOrThrow { get; set; }
 
         #endregion
 
         #region Public Methods
-
-        /// <summary>Free resources used by the client.</summary>
-        public virtual void Dispose()
-        {
-            //this.Dispose(true);
-            //GC.SuppressFinalize(this); // garbage collector method?!?! not sure what this does
-        }
 
         /// <summary>
         /// Set base url for each request.
@@ -35,13 +34,13 @@ namespace Telegraph
         /// <returns>Returns client builder for chaining.</returns>
         public RequestBuilder WithBaseUrl(string url)
         {
-            _baseUrl = url;
+            BaseUrl = url;
             return this;
         }
 
-        public RequestBuilder WithQueryParameters<T>(Dictionary<string, object> parameters) where T : class
+        public RequestBuilder WithQueryParameters(Dictionary<string, object> parameters)
         {
-            _dictParameters = parameters;
+            Parameters = parameters;
             return this;
         }
 
@@ -50,27 +49,40 @@ namespace Telegraph
         /// <param name="parameter">The credentials containing the authentication information.</param>
         public RequestBuilder WithAuthentication(string scheme, string parameter)
         {
-            this.RequestMessage.Headers.Authorization = new AuthenticationHeaderValue(scheme, parameter);
+            RequestMessage.Headers.Authorization = new AuthenticationHeaderValue(scheme, parameter);
             return this;
         }
 
-        public RequestBuilder GetAsync()
+        public async Task<RequestBuilder> GetAsync(string queryParameters = "")
         {
+            ResponseMessage = await client.GetAsync(queryParameters);
             return this;
         }
 
-        public RequestBuilder PostAsync()
+        public async Task<RequestBuilder> PostAsync<T>(string queryParameters = "", T data = null)
+            where T : class
         {
+            var content = new ObjectContent<T>(data, new JsonMediaTypeFormatter());
+            ResponseMessage = await client.PostAsync(queryParameters, content);
             return this;
         }
 
+        public T ReturnAs<T>() where T : class, new()
+        {
+            T result = null;
+            if (ResponseMessage.IsSuccessStatusCode)
+            {
+                // Parse the response body. Blocking!
+                result = ResponseMessage.Content.ReadAsAsync<T>().Result;
+            }
+
+            return result;
+        }
 
         // CONVERSION OPERATOR
-        public static implicit operator Response(RequestBuilder rb)
+        public static implicit operator Request(RequestBuilder rb)
         {
-            return new Response(
-                rb.ResponseMessage
-            );
+            return new Request( rb.RequestMessage );
         }
 
         #endregion
