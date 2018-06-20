@@ -1,44 +1,56 @@
+using System.Linq;
+using Telegraph.Tests.Models;
 using Xunit;
-using System.Collections.Generic;
 
 namespace Telegraph.Tests
 {
     public class TelegraphTests
     {
-        string url = "https://pokeapi.co/api/v2";
+        readonly string url = "https://api.coinmarketcap.com/v2/";
 
         [Fact]
-        void Check_ResponseNotNullForGetAync()
+        async void Check_ResponseNotNullForGetAync()
         {
-            var response = new RequestBuilder()
-                .WithBaseUrl( url )
-                .GetAsync( "/pokemon/25" ).Result
-                .ReturnAs<Pokemon>();
+            var response = await RequestBuilder.Create()
+                .WithBaseUrl(url)
+                .GetAsync<Listings>("listings");
 
             Assert.NotNull( response );
         }
 
         [Fact]
-        void Check_TypeCastResponse()
+        async void Check_TypeCastResponseForGetAsync()
         {
-            var response = new RequestBuilder()
-                .WithBaseUrl( url )
-                .GetAsync( "/pokemon/25" ).Result
-                .ReturnAs<Pokemon>();
+            var response = await RequestBuilder.Create()
+                .WithBaseUrl(url)
+                .GetAsync<Listings>("listings");
             
-            Assert.Matches( "Pikachu".ToLower(), response.Name.ToLower() );
+            Assert.Matches( "Bitcoin".ToLower(), response.Data.ElementAt(0).Name.ToLower() );
         }
 
-        void Check_ResponseNotNullForPostAync()
+        [Fact]
+        async void Check_ResponseNotNullForPostAync()
         {
-            /*
-            var response = new RequestBuilder()
-                .WithBaseUrl( url )
-                .PostAsync( queryParameters: "", data: new T() ).Result
-                .ReturnAs<Pokemon>();
+            //var response = await RequestBuilder.Create()
+            //    .WithBaseUrl( url )
+            //    .PostAsync<Listings>( content: new Listing(), queryParameters: "" );
             
-            Assert.NotNull( response );
-            */
+            //Assert.NotNull( response );
+        }
+
+        [Fact]
+        async void Check_ResponseNotNullWithPostPayload() {
+            //var response = new RequestBuilder()
+            //    .WithBaseUrl(url)
+            //    .PostAsync(queryParameters: "", data: new T()).Result
+            //    .ReturnAs<Listing>();
+
+            //Assert.NotNull(response);
+        }
+
+        [Fact]
+        async void Check_CanUseAuthorization() {
+
         }
     }
 }
