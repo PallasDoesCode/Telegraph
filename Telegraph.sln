@@ -1,11 +1,14 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Telegraph", "Telegraph\Telegraph.csproj", "{9AFCB191-B44E-4AB5-A780-B63B0FD6960A}"
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telegraph", "Telegraph\Telegraph.csproj", "{9AFCB191-B44E-4AB5-A780-B63B0FD6960A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Telegraph.Tests", "Telegraph.Tests\Telegraph.Tests.csproj", "{67E66B60-A701-4F74-8BB5-BB34243E268F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telegraph.Tests", "Telegraph.Tests\Telegraph.Tests.csproj", "{67E66B60-A701-4F74-8BB5-BB34243E268F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Telegraph.UI", "Telegraph.UI\Telegraph.UI.csproj", "{3DB04249-CF12-431B-AD90-F543C84ACBF1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Telegraph.UI", "Telegraph.UI\Telegraph.UI.csproj", "{EEBA84F5-E570-44CF-A730-6E7183AFA0D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinMarketCap.Core", "CoinMarketCap.Core\CoinMarketCap.Core.csproj", "{8EFA6D56-4F2A-4D4F-BBBA-4BD222F2B0B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +24,19 @@ Global
 		{67E66B60-A701-4F74-8BB5-BB34243E268F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67E66B60-A701-4F74-8BB5-BB34243E268F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67E66B60-A701-4F74-8BB5-BB34243E268F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3DB04249-CF12-431B-AD90-F543C84ACBF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3DB04249-CF12-431B-AD90-F543C84ACBF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3DB04249-CF12-431B-AD90-F543C84ACBF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3DB04249-CF12-431B-AD90-F543C84ACBF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEBA84F5-E570-44CF-A730-6E7183AFA0D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEBA84F5-E570-44CF-A730-6E7183AFA0D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEBA84F5-E570-44CF-A730-6E7183AFA0D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEBA84F5-E570-44CF-A730-6E7183AFA0D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EFA6D56-4F2A-4D4F-BBBA-4BD222F2B0B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EFA6D56-4F2A-4D4F-BBBA-4BD222F2B0B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EFA6D56-4F2A-4D4F-BBBA-4BD222F2B0B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EFA6D56-4F2A-4D4F-BBBA-4BD222F2B0B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F506162-11D2-4C0B-A2F1-FEA8D9E7388C}
 	EndGlobalSection
 EndGlobal

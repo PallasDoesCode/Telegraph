@@ -1,5 +1,5 @@
+using CoinMarketCap.Core.Models;
 using System.Linq;
-using Telegraph.Tests.Models;
 using Xunit;
 
 namespace Telegraph.Tests
@@ -28,28 +28,19 @@ namespace Telegraph.Tests
             Assert.Matches( "Bitcoin".ToLower(), response.Data.ElementAt(0).Name.ToLower() );
         }
 
-        [Fact]
-        async void Check_ResponseNotNullForPostAync()
+        [Fact(Skip="API does not support post requests")]
+        void Check_ResponseNotNullForPostAync()
         {
-            //var response = await RequestBuilder.Create()
-            //    .WithBaseUrl( url )
-            //    .PostAsync<Listings>( content: new Listing(), queryParameters: "" );
+        }
+
+        [Fact(Skip = "API does not support post requests")]
+        void Check_ResponseNotNullWithPostPayload()
+        {
             
-            //Assert.NotNull( response );
         }
 
-        [Fact]
-        async void Check_ResponseNotNullWithPostPayload() {
-            //var response = new RequestBuilder()
-            //    .WithBaseUrl(url)
-            //    .PostAsync(queryParameters: "", data: new T()).Result
-            //    .ReturnAs<Listing>();
-
-            //Assert.NotNull(response);
-        }
-
-        [Fact]
-        async void Check_CanUseAuthorization() {
+        [Fact(Skip = "API does not support post requests")]
+        void Check_CanUseAuthorization() {
 
         }
     }
