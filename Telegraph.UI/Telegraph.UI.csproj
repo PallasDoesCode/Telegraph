@@ -14,10 +14,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\Home\About.cshtml" />
     <Content Remove="Views\Shared\_CookieConsentPartial.cshtml" />
     <Content Remove="Views\Shared\_Layout.cshtml" />
+    <Content Remove="wwwroot\js\Telegraph.jsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\js\Telegraph.jsx" />
   </ItemGroup>
 </Project>
