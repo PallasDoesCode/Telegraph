@@ -11,7 +11,7 @@ export class JsonViewer extends Component {
 
         this.state = { json: [] };
 
-        fetch('api/json')
+        fetch('api/json?limit=25')
             .then(response => response.json())
             .then(data => {
                 this.setState({ json: data });

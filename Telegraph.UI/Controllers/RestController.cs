@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using CoinMarketCap.Core.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace Telegraph.UI.Controllers {
     [Route("api/json")]
@@ -10,13 +11,17 @@ namespace Telegraph.UI.Controllers {
 
         // GET: api/<controller>
         [HttpGet]
-        public async Task<Tickers> GetAllListings()
+        public async Task<Listings> GetAllListings(int limit = 0)
         {
-            var response = await RequestBuilder.Create()
+            Listings response = await RequestBuilder.Create()
                 .WithBaseUrl( url )
-                .GetAsync<Tickers>( "ticker?limit=25" );
+                .GetAsync<Listings>( "listings" );
 
-            return response;
+            // Only return the top first 25 results
+            return new Listings() {
+                Data = limit == 0 ? response.Data : response.Data.Take( limit ),
+                Metadata = response.Metadata
+            };
         }
     }
 }
