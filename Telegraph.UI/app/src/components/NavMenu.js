@@ -12,7 +12,7 @@ export class NavMenu extends Component {
       <Navbar inverse fixedTop fluid collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <Link to={'/'}>Telegraph.WebApi</Link>
+            <Link to={'/'}>Telegraph.UI</Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
@@ -25,12 +25,12 @@ export class NavMenu extends Component {
             </LinkContainer>
             <LinkContainer to={'/json'}>
               <NavItem>
-                <Glyphicon glyph='education' /> JSON Viewer
+                <Glyphicon glyph='th-list' /> JSON Viewer
               </NavItem>
             </LinkContainer>
             <LinkContainer to={'/fetchdata'}>
               <NavItem>
-                <Glyphicon glyph='th-list' /> Fetch data
+                <Glyphicon glyph='cloud' /> Weather
               </NavItem>
             </LinkContainer>
           </Nav>
