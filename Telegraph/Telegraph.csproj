@@ -2,6 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Tyler Hughes</Authors>
+    <Company />
+    <Product />
+    <Copyright>© Tyler Hughes | 2018</Copyright>
+    <PackageLicenseUrl>https://github.com/tylerbhughes/Telegraph/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/tylerbhughes/Telegraph</PackageProjectUrl>
+    <PackageIconUrl />
+    <RepositoryUrl>https://github.com/tylerbhughes/Telegraph</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>REST, API, client</PackageTags>
+    <Description>A small .NET Standard library for making REST requests.</Description>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http.Formatting">
