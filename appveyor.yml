@@ -37,7 +37,3 @@ environment:
 artifacts:
   - path: '**\Telegraph*.nupkg'
   - path: '**\Telegraph.dll'
-
-nuget:
-  account_feed: true
-  project_feed: true
