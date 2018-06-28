@@ -32,7 +32,6 @@ before_build:
 
 after_build:
   - cmd: dotnet test .\Telegraph.Tests\Telegraph.Tests.csproj
-  - ps: .\appveyor.ps1
 
 environment:
   NuGetApiKey:
