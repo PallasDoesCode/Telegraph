@@ -2,18 +2,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Telegraph", "Telegraph\Telegraph.csproj", "{9AFCB191-B44E-4AB5-A780-B63B0FD6960A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telegraph", "Telegraph\Telegraph.csproj", "{9AFCB191-B44E-4AB5-A780-B63B0FD6960A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Telegraph.Tests", "Telegraph.Tests\Telegraph.Tests.csproj", "{67E66B60-A701-4F74-8BB5-BB34243E268F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telegraph.Tests", "Telegraph.Tests\Telegraph.Tests.csproj", "{67E66B60-A701-4F74-8BB5-BB34243E268F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Telegraph.UI", "Telegraph.UI\Telegraph.UI.csproj", "{EEBA84F5-E570-44CF-A730-6E7183AFA0D8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinMarketCap.Core", "CoinMarketCap.Core\CoinMarketCap.Core.csproj", "{8EFA6D56-4F2A-4D4F-BBBA-4BD222F2B0B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoinMarketCap.Core", "CoinMarketCap.Core\CoinMarketCap.Core.csproj", "{8EFA6D56-4F2A-4D4F-BBBA-4BD222F2B0B8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AA94967B-4A8D-4E60-90F6-D4D8A8D1F2AD}"
 	ProjectSection(SolutionItems) = preProject
-		appveyor.yml = appveyor.yml
+		.gitignore = .gitignore
 		appveyor.ps1 = appveyor.ps1
+		appveyor.yml = appveyor.yml
+		LICENSE = LICENSE
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
@@ -30,10 +31,6 @@ Global
 		{67E66B60-A701-4F74-8BB5-BB34243E268F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67E66B60-A701-4F74-8BB5-BB34243E268F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67E66B60-A701-4F74-8BB5-BB34243E268F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EEBA84F5-E570-44CF-A730-6E7183AFA0D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EEBA84F5-E570-44CF-A730-6E7183AFA0D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EEBA84F5-E570-44CF-A730-6E7183AFA0D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EEBA84F5-E570-44CF-A730-6E7183AFA0D8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8EFA6D56-4F2A-4D4F-BBBA-4BD222F2B0B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8EFA6D56-4F2A-4D4F-BBBA-4BD222F2B0B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EFA6D56-4F2A-4D4F-BBBA-4BD222F2B0B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
