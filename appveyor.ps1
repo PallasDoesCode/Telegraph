@@ -54,12 +54,13 @@ function PublishNuGetPackage{
         foreach($pkg in $nugetPackage){
             $pkgPath = (get-item $pkg).FullName
             $cmdArgs = @('push',$pkgPath,$nugetApiKey,'-source',$source,'-NonInteractive')
+			$logfilepath = "$([System.IO.Path]::GetTempFileName()).log"
 
             'Publishing nuget package [{0}]' -f $pkgPath | Write-Message
 
             $filteredCmd = Filter-String ('Publishing nuget package with the following args: [nuget.exe {0}]' -f ($cmdArgs -join ' '))
             if($PSCmdlet.ShouldProcess($env:COMPUTERNAME, $filteredCmd)){
-                &(Get-Nuget) $cmdArgs
+                &(Get-Nuget) $cmdArgs *> $logfilepath
                 if($LASTEXITCODE -ne 0){
                     throw ('nuget.exe failed with the following error code [{0}]' -f $LASTEXITCODE)
                 }
