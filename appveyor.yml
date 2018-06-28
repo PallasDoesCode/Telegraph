@@ -1,0 +1,39 @@
+# Notes:
+#   - Minimal appveyor.yml file is an empty file. All sections are optional.
+#   - Indent each level of configuration with 2 spaces. Do not use tabs!
+#   - All section names are case-sensitive.
+#   - Section names should be unique on each level.
+#   - Full reference at http://www.appveyor.com/docs/appveyor-yml
+
+#---------------------------------#
+#      general configuration      #
+#---------------------------------#
+
+# version format
+version: 1.0.{build}
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+# Operating system (build VM template)
+os: Visual Studio 2017
+
+#---------------------------------#
+#       build configuration       #
+#---------------------------------#
+before_build:
+- cmd: dotnet restore
+
+build_script:
+  - ps: .\appveyor.ps1
+after_build:
+  - cmd: dotnet test .\Telegraph.Tests\Telegraph.Tests.csproj
+
+environment:
+  NuGetApiKey:
+    secure: 8Bp8tEdCYcgU4G9urzVuRhve26ZzDI15xn3cJ2L7KJbunZXDJNYxekkZxodul5Vt
+
+artifacts:
+  - path: '**\Telegraph*.nupkg'
+  - path: '**\Telegraph.dll'
