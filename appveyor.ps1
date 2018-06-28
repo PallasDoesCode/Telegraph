@@ -1,15 +1,17 @@
 if($env:APPVEYOR_REPO_BRANCH -eq "release"){
-    PublishNuGetPackage -nugetPackage Telegraph -nugetApiKey ApiKeyGoesHere
+	[string]$nugetApiKey = ($env:NuGetApiKey)
+
+    PublishNuGetPackage -nugetPackage Telegraph -nugetApiKey $nugetApiKey
 } 
 else {
-    # Untested commit so don't publish to Nuget yet
+    # Untested commit so don't publish to Nuget
 }
 
 
 function Get-Nuget{
     [cmdletbinding()]
     param(
-        $toolsDir = ("$env:LOCALAPPDATA\Ligershark\tools\"),
+        $toolsDir = ("$env:LOCALAPPDATA\Telegraph\tools\"),
         $nugetDownloadUrl = 'http://nuget.org/nuget.exe'
     )
     process{
