@@ -1,3 +1,31 @@
+function Filter-String{
+[cmdletbinding()]
+    param(
+        [Parameter(Position=0,Mandatory=$true,ValueFromPipeline=$true)]
+        [string[]]$message
+    )
+    process{
+        foreach($msg in $message){
+            if($nugetApiKey){
+                $msg = $msg.Replace($nugetApiKey,'REMOVED-FROM-LOG')
+            }
+
+            $msg
+        }
+    }
+}
+
+function Write-Message{
+    [cmdletbinding()]
+    param(
+        [Parameter(Position=0,Mandatory=$true,ValueFromPipeline=$true)]
+        [string[]]$message
+    )
+    process{
+        Filter-String -message $message | Write-Verbose
+    }
+}
+
 function Get-Nuget{
     [cmdletbinding()]
     param(
