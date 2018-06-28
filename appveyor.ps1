@@ -1,13 +1,3 @@
-if($env:APPVEYOR_REPO_BRANCH -eq "release"){
-	[string]$nugetApiKey = ($env:NuGetApiKey)
-
-    PublishNuGetPackage -nugetPackage Telegraph -nugetApiKey $nugetApiKey
-} 
-else {
-    # Untested commit so don't publish to Nuget
-}
-
-
 function Get-Nuget{
     [cmdletbinding()]
     param(
@@ -67,4 +57,13 @@ function PublishNuGetPackage{
             }
         }
     }
+}
+
+if($env:APPVEYOR_REPO_BRANCH -eq "release"){
+	[string]$nugetApiKey = ($env:NuGetApiKey)
+
+    PublishNuGetPackage -nugetPackage ".\Telegraph\bin\Release\Telegraph*.nupkg" -nugetApiKey $nugetApiKey
+} 
+else {
+    # Untested commit so don't publish to Nuget
 }
