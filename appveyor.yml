@@ -23,7 +23,7 @@ os: Visual Studio 2017
 #       build configuration       #
 #---------------------------------#
 before_build:
-- cmd: dotnet restore
+- cmd: nuget restore
 
 build_script:
   - ps: .\appveyor.ps1
@@ -32,11 +32,11 @@ after_build:
 
 environment:
   NuGetApiKey:
-    secure: YourKeyGoesHere
+    secure: 8Bp8tEdCYcgU4G9urzVuRhve26ZzDI15xn3cJ2L7KJbunZXDJNYxekkZxodul5Vt
 
 artifacts:
-  - path: '**\*.nupkg'
-  - path: '**\Telegraph*.dll'
+  - path: '**\Telegraph*.nupkg'
+  - path: '**\Telegraph.dll'
 
 nuget:
   account_feed: true
