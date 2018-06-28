@@ -28,7 +28,7 @@ before_build:
 build_script:
   - ps: .\appveyor.ps1
 after_build:
-  - cmd: dotnet test
+  - cmd: dotnet test **/**/Telegraph.Tests.csproj
 
 environment:
   NuGetApiKey:
