@@ -66,7 +66,7 @@ function PublishNuGetPackage{
         $nugetApiKey,
 
         [Parameter()]
-        $source = 'https://www.nuget.org/api/v2/package'
+        $source = 'https://dist.nuget.org/win-x86-commandline/latest/nuget.exe'
     )
     process{
         foreach($pkg in $nugetPackage){
