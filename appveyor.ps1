@@ -41,7 +41,7 @@ function Get-Nuget{
                 New-Item -Path $nugetDir -ItemType Directory | Out-Null
             }
 
-            'Downloading nuget.exe' | Write-Message
+            'Downloading nuget.exe' | Write-Message -Verbose
             (New-Object System.Net.WebClient).DownloadFile($nugetDownloadUrl, $nugetDestPath)
 
             # double check that is was written to disk
@@ -51,6 +51,7 @@ function Get-Nuget{
         }
 
         # return the path of the file
+        $nugetDestPath | Write-Message -Verbose
         $nugetDestPath
     }
 }
@@ -66,7 +67,7 @@ function PublishNuGetPackage{
         $nugetApiKey,
 
         [Parameter()]
-        $source = 'https://dist.nuget.org/win-x86-commandline/latest/nuget.exe'
+        $source = 'https://www.nuget.org/api/v2/package'
     )
     process{
         foreach($pkg in $nugetPackage){
@@ -74,9 +75,10 @@ function PublishNuGetPackage{
             $cmdArgs = @('push',$pkgPath,$nugetApiKey,'-source',$source,'-NonInteractive')
 			$logfilepath = "$([System.IO.Path]::GetTempFileName()).log"
 
-            'Publishing nuget package [{0}]' -f $pkgPath | Write-Message
+            'Publishing nuget package [{0}]' -f $pkgPath | Write-Message -Verbose
 
             $filteredCmd = Filter-String ('Publishing nuget package with the following args: [nuget.exe {0}]' -f ($cmdArgs -join ' '))
+            $filteredCmd | Write-Message -Verbose
             if($PSCmdlet.ShouldProcess($env:COMPUTERNAME, $filteredCmd)){
                 &(Get-Nuget) $cmdArgs *> $logfilepath
                 if($LASTEXITCODE -ne 0){
