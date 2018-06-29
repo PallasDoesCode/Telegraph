@@ -67,23 +67,26 @@ namespace Telegraph
             return this;
         }
 
-        public async Task<T> GetAsync<T>(string queryParameters = "")
+        public async Task<Response<T>> GetAsync<T>(string queryParameters = "")
         {
             var response = await client.GetAsync(queryParameters);
-            response.EnsureSuccessStatusCode();
 
-            return await response.Content.ReadAsAsync<T>();
+            return new Response<T> {
+                StatusCode = response.StatusCode,
+                Content = await response.Content.ReadAsAsync<T>()
+            };
         }
 
-        public async Task<T> PostAsync<T>(HttpContent content = null, string queryParameters = "")
-        {
+        public async Task<Response<T>> PostAsync<T>(HttpContent content = null, string queryParameters = "") {
             var response = await client.PostAsync(queryParameters, content);
-            response.EnsureSuccessStatusCode();
 
-            return await response.Content.ReadAsAsync<T>();
+            return new Response<T> {
+                StatusCode = response.StatusCode,
+                Content = await response.Content.ReadAsAsync<T>()
+            };
         }
 
-        public async Task<T> PostJsonAsync<T, U>(U payload, string queryParameters = "")
+        public async Task<Response<T>> PostJsonAsync<T, U>(U payload, string queryParameters = "")
         {
             var content = new ObjectContent<U>(payload, new JsonMediaTypeFormatter());
 

@@ -24,8 +24,10 @@ namespace Telegraph.Tests
             var response = await RequestBuilder.Create()
                 .WithBaseUrl(url)
                 .GetAsync<Listings>("listings");
+
+            Listing currency = response.Content.Data.ElementAt(0);
             
-            Assert.Matches( "Bitcoin".ToLower(), response.Data.ElementAt(0).Name.ToLower() );
+            Assert.Matches( "Bitcoin".ToLower(), currency.Name.ToLower() );
         }
 
         [Fact(Skip="API does not support post requests")]
