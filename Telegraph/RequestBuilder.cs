@@ -46,6 +46,7 @@ namespace Telegraph
         /// Set base url for each request.
         /// </summary>
         /// <param name="url">Base url address to set. e.g. "https://api.mysite.com"</param>
+        /// <param name="queryParameters">Query paramerters to add to the base url.</param>
         /// <returns>Returns client builder for chaining.</returns>
         public RequestBuilder WithBaseUrl(string url, Dictionary<string, object> queryParameters = null)
         {
@@ -67,6 +68,10 @@ namespace Telegraph
             return this;
         }
 
+        /// <summary>Performs a GET request against a given URL</summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="queryParameters"></param>
+        /// <returns>Returns a Response object</returns>
         public async Task<Response<T>> GetAsync<T>(string queryParameters = "")
         {
             var response = await client.GetAsync(queryParameters);
@@ -77,6 +82,11 @@ namespace Telegraph
             };
         }
 
+        /// <summary>Performs a POST request against a given URL</summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="content"></param>
+        /// <param name="queryParameters"></param>
+        /// <returns>Returns a Response object</returns>
         public async Task<Response<T>> PostAsync<T>(HttpContent content = null, string queryParameters = "") {
             var response = await client.PostAsync(queryParameters, content);
 
@@ -86,6 +96,12 @@ namespace Telegraph
             };
         }
 
+        /// <summary>Performs a POST request against a given URL</summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="U"></typeparam>
+        /// <param name="payload"></param>
+        /// <param name="queryParameters"></param>
+        /// <returns>Returns a Response object</returns>
         public async Task<Response<T>> PostJsonAsync<T, U>(U payload, string queryParameters = "")
         {
             var content = new ObjectContent<U>(payload, new JsonMediaTypeFormatter());
