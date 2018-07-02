@@ -40,4 +40,4 @@ environment:
 
 artifacts:
   - path: '.\TelegraphSharp\bin\Release\Telegraph*.nupkg'
-  - path: '.\TelegraphSharp\bin\Release\**\Telegraph.dll'
+  - path: '.\TelegraphSharp\bin\Release\**\TelegraphSharp.dll'
