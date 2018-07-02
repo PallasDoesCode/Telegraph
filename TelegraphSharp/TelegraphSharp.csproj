@@ -14,8 +14,12 @@
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>REST, API, client</PackageTags>
     <Description>A small .NET Standard library for making REST requests.</Description>
-    <Version>1.0.1</Version>
-    <PackageReleaseNotes>1.0.1
+    <Version>1.0.2</Version>
+    <PackageReleaseNotes>1.0.2
+ - Added support for adding request headers
+ - Added synchronous GET and POST methods
+
+1.0.1
  - Added support for retrieving response hdeaders</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>

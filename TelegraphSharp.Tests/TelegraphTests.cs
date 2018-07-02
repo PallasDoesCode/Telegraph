@@ -20,6 +20,15 @@ namespace Telegraph.Tests
         }
 
         [Fact]
+        async void Check_ResponseNotNullForGet() {
+            var response = await RequestBuilder.Create()
+                .WithBaseUrl(url)
+                .Get<Listings>("listings");
+
+            Assert.NotNull(response);
+        }
+
+        [Fact]
         async void Check_TypeCastResponseForGetAsync()
         {
             var response = await RequestBuilder.Create()
@@ -31,15 +40,36 @@ namespace Telegraph.Tests
             Assert.Matches( "Bitcoin".ToLower(), currency.Name.ToLower() );
         }
 
+        [Fact]
+        async void Check_TypeCastResponseForGet() {
+            var response = await RequestBuilder.Create()
+                .WithBaseUrl(url)
+                .Get<Listings>("listings");
+
+            Listing currency = response.Content.Data.ElementAt(0);
+
+            Assert.Matches("Bitcoin".ToLower(), currency.Name.ToLower());
+        }
+
         [Fact(Skip="API does not support post requests")]
         void Check_ResponseNotNullForPostAync()
         {
         }
 
         [Fact(Skip = "API does not support post requests")]
-        void Check_ResponseNotNullWithPostPayload()
+        void Check_ResponseNotNullForPost()
         {
             
+        }
+
+        [Fact(Skip = "API does not support post requests")]
+        void Check_TypeCastResponseForPostAsync() {
+
+        }
+
+        [Fact(Skip = "API does not support post requests")]
+        void Check_TypeCastResponseForPost() {
+
         }
 
         [Fact(Skip = "API does not support post requests")]

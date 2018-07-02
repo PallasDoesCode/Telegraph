@@ -5,6 +5,8 @@ using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
+using Newtonsoft.Json;
+
 namespace TelegraphSharp
 {
     public class RequestBuilder : IDisposable
@@ -59,6 +61,15 @@ namespace TelegraphSharp
             return this;
         }
 
+        public RequestBuilder WithRequestHeaders<THeader>(Dictionary<string, THeader> headers) {
+            foreach (var header in headers) {
+                var json = JsonConvert.SerializeObject( header.Value );
+                client.DefaultRequestHeaders.Add( header.Key, json );
+            }
+
+            return this;
+        }
+
         /// <summary>Add an authentication header.</summary>
         /// <param name="scheme">The scheme to use for authorization. e.g.: "Basic", "Bearer".</param>
         /// <param name="parameter">The credentials containing the authentication information.</param>
@@ -68,7 +79,7 @@ namespace TelegraphSharp
             return this;
         }
 
-        /// <summary>Performs a GET request against a given URL</summary>
+        /// <summary>Performs an asyncronous GET request against a given URL</summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="queryParameters"></param>
         /// <returns>Returns a Response object</returns>
@@ -83,7 +94,21 @@ namespace TelegraphSharp
             };
         }
 
-        /// <summary>Performs a POST request against a given URL</summary>
+        /// <summary>Performs a synchronous GET request against a given URL</summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="queryParameters"></param>
+        /// <returns>Returns a Response object</returns>
+        public async Task<Response<T>> Get<T>(string queryParameters = "") {
+            var response = client.GetAsync(queryParameters).Result;
+
+            return new Response<T> {
+                Content = await response.Content.ReadAsAsync<T>(),
+                Headers = response.Headers,
+                StatusCode = response.StatusCode
+            };
+        }
+
+        /// <summary>Performs an asynchronous POST request against a given URL</summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="content"></param>
         /// <param name="queryParameters"></param>
@@ -98,17 +123,44 @@ namespace TelegraphSharp
             };
         }
 
-        /// <summary>Performs a POST request against a given URL</summary>
+        /// <summary>Performs a synchronous POST request against a given URL</summary>
         /// <typeparam name="T"></typeparam>
-        /// <typeparam name="U"></typeparam>
+        /// <param name="content"></param>
+        /// <param name="queryParameters"></param>
+        /// <returns>Returns a Response object</returns>
+        public async Task<Response<T>> Post<T>(HttpContent content = null, string queryParameters = "") {
+            var response = client.PostAsync(queryParameters, content).Result;
+
+            return new Response<T> {
+                Content = await response.Content.ReadAsAsync<T>(),
+                Headers = response.Headers,
+                StatusCode = response.StatusCode
+            };
+        }
+
+        /// <summary>Performs an asynchronous POST request against a given URL</summary>
+        /// <typeparam name="TDestination"></typeparam>
+        /// <typeparam name="TSource"></typeparam>
         /// <param name="payload"></param>
         /// <param name="queryParameters"></param>
         /// <returns>Returns a Response object</returns>
-        public async Task<Response<T>> PostJsonAsync<T, U>(U payload, string queryParameters = "")
+        public async Task<Response<TDestination>> PostJsonAsync<TSource, TDestination>(TSource payload, string queryParameters = "")
         {
-            var content = new ObjectContent<U>(payload, new JsonMediaTypeFormatter());
+            var content = new ObjectContent<TSource>(payload, new JsonMediaTypeFormatter());
 
-            return await PostAsync<T>(content, queryParameters);
+            return await PostAsync<TDestination>(content, queryParameters);
+        }
+
+        /// <summary>Performs a synchronous POST request against a given URL</summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <typeparam name="TDestination"></typeparam>
+        /// <param name="payload"></param>
+        /// <param name="queryParameters"></param>
+        /// <returns>Returns a Response object</returns>
+        public Task<Response<TDestination>> PostJson<TSource, TDestination>(TSource payload, string queryParameters = "") {
+            var content = new ObjectContent<TSource>(payload, new JsonMediaTypeFormatter());
+
+            return Post<TDestination>(content, queryParameters);
         }
 
         #endregion
