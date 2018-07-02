@@ -16,6 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CoinMarketCap.Core\CoinMarketCap.Core.csproj" />
-    <ProjectReference Include="..\Telegraph\TelegraphSharp.csproj" />
+    <ProjectReference Include="..\TelegraphSharp\TelegraphSharp.csproj" />
   </ItemGroup>
 </Project>
