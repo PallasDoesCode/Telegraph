@@ -1,11 +1,16 @@
 ﻿using System.Net;
+using System.Net.Http.Headers;
 
-namespace Telegraph
+namespace TelegraphSharp
 {
-
     public class Response<T>
     {
-        public HttpStatusCode StatusCode { get; set; }
+        #region Properties
+
         public T Content { get; set; }
+        public HttpResponseHeaders Headers { get; set; }
+        public HttpStatusCode StatusCode { get; set; }
+
+        #endregion
     }
 }

@@ -5,7 +5,7 @@ using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace Telegraph
+namespace TelegraphSharp
 {
     public class RequestBuilder : IDisposable
     {
@@ -77,8 +77,9 @@ namespace Telegraph
             var response = await client.GetAsync(queryParameters);
 
             return new Response<T> {
-                StatusCode = response.StatusCode,
-                Content = await response.Content.ReadAsAsync<T>()
+                Content = await response.Content.ReadAsAsync<T>(),
+                Headers = response.Headers,
+                StatusCode = response.StatusCode
             };
         }
 
@@ -91,8 +92,9 @@ namespace Telegraph
             var response = await client.PostAsync(queryParameters, content);
 
             return new Response<T> {
-                StatusCode = response.StatusCode,
-                Content = await response.Content.ReadAsAsync<T>()
+                Content = await response.Content.ReadAsAsync<T>(),
+                Headers = response.Headers,
+                StatusCode = response.StatusCode
             };
         }
 

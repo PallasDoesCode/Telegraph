@@ -1,5 +1,6 @@
 using CoinMarketCap.Core.Models;
 using System.Linq;
+using TelegraphSharp;
 using Xunit;
 
 namespace Telegraph.Tests
