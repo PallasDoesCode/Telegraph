@@ -29,7 +29,7 @@ function Write-Message{
 function Get-Nuget{
     [cmdletbinding()]
     param(
-        $toolsDir = ("$env:LOCALAPPDATA\Telegraph\tools\"),
+        $toolsDir = ("$env:LOCALAPPDATA\TelegraphSharp\tools\"),
         $nugetDownloadUrl = 'https://dist.nuget.org/win-x86-commandline/latest/nuget.exe'
     )
     process{
