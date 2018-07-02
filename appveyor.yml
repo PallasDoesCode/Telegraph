@@ -31,7 +31,7 @@ before_build:
 - cmd: dotnet restore
 
 after_build:
-  - cmd: dotnet test .\Telegraph.Tests\Telegraph.Tests.csproj
+  - cmd: dotnet test .\TelegraphSharp.Tests\TelegraphSharp.Tests.csproj
   - ps: .\appveyor.ps1
 
 environment:
@@ -39,5 +39,5 @@ environment:
     secure: 8Bp8tEdCYcgU4G9urzVuRhve26ZzDI15xn3cJ2L7KJbunZXDJNYxekkZxodul5Vt
 
 artifacts:
-  - path: '.\Telegraph\bin\Release\Telegraph*.nupkg'
-  - path: '.\Telegraph\bin\Release\**\Telegraph.dll'
+  - path: '.\TelegraphSharp\bin\Release\Telegraph*.nupkg'
+  - path: '.\TelegraphSharp\bin\Release\**\Telegraph.dll'

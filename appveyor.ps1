@@ -92,7 +92,7 @@ function PublishNuGetPackage{
 if($env:APPVEYOR_REPO_BRANCH -eq "release"){
 	[string]$nugetApiKey = ($env:NuGetApiKey)
 
-    PublishNuGetPackage -nugetPackage ".\Telegraph\bin\Release\Telegraph*.nupkg" -nugetApiKey $nugetApiKey
+    PublishNuGetPackage -nugetPackage ".\TelegraphSharp\bin\Release\Telegraph*.nupkg" -nugetApiKey $nugetApiKey
 } 
 else {
     # Untested commit so don't publish to Nuget
