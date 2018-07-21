@@ -2,9 +2,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelegraphSharp", "TelegraphSharp\TelegraphSharp.csproj", "{9AFCB191-B44E-4AB5-A780-B63B0FD6960A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telegraph", "Telegraph\Telegraph.csproj", "{9AFCB191-B44E-4AB5-A780-B63B0FD6960A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelegraphSharp.Tests", "TelegraphSharp.Tests\TelegraphSharp.Tests.csproj", "{67E66B60-A701-4F74-8BB5-BB34243E268F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telegraph.Tests", "Telegraph.Tests\Telegraph.Tests.csproj", "{67E66B60-A701-4F74-8BB5-BB34243E268F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoinMarketCap.Core", "CoinMarketCap.Core\CoinMarketCap.Core.csproj", "{8EFA6D56-4F2A-4D4F-BBBA-4BD222F2B0B8}"
 EndProject
