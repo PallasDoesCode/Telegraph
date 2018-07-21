@@ -29,7 +29,7 @@ function Write-Message{
 function Get-Nuget{
     [cmdletbinding()]
     param(
-        $toolsDir = ("$env:LOCALAPPDATA\TelegraphSharp\tools\"),
+        $toolsDir = ("$env:LOCALAPPDATA\Telegraph\tools\"),
         $nugetDownloadUrl = 'https://dist.nuget.org/win-x86-commandline/latest/nuget.exe'
     )
     process{
@@ -92,7 +92,7 @@ function PublishNuGetPackage{
 if($env:APPVEYOR_REPO_BRANCH -eq "release"){
 	[string]$nugetApiKey = ($env:NuGetApiKey)
 
-    PublishNuGetPackage -nugetPackage ".\TelegraphSharp\bin\Release\Telegraph*.nupkg" -nugetApiKey $nugetApiKey
+    PublishNuGetPackage -nugetPackage ".\Telegraph\bin\Release\Telegraph*.nupkg" -nugetApiKey $nugetApiKey
 } 
 else {
     # Untested commit so don't publish to Nuget
