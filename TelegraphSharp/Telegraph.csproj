@@ -7,10 +7,10 @@
     <Company />
     <Product />
     <Copyright>© Tyler Hughes | 2018</Copyright>
-    <PackageLicenseUrl>https://github.com/tylerbhughes/TelegraphSharp/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/tylerbhughes/TelegraphSharp</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/tylerbhughes/Telegraph/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/tylerbhughes/Telegraph</PackageProjectUrl>
     <PackageIconUrl />
-    <RepositoryUrl>https://github.com/tylerbhughes/TelegraphSharp</RepositoryUrl>
+    <RepositoryUrl>https://github.com/tylerbhughes/Telegraph</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>REST, API, client</PackageTags>
     <Description>A small .NET Standard library for making REST requests.</Description>
